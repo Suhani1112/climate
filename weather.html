@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Weather Route</title>
+  <style>
+    body { font-family: Arial; padding: 40px; background: #eef2ff; }
+    .card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); width: 600px; margin: auto; }
+    pre { background: #f3f3f3; padding: 10px; border-radius: 8px; }
+    #result { margin-top: 20px; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>🌤️ Live Weather Data</h1>
+    <p>This page fetches real weather from the backend.</p>
+
+    <button id="fetchWeather">Get Weather</button>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    document.getElementById("fetchWeather").onclick = async () => {
+      const response = await fetch("http://localhost:3000/weather", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          lat: 40.7128,
+          lon: -74.0060,
+          userId: "user123",
+          includeAQI: true
+        })
+      });
+
+      const data = await response.json();
+      document.getElementById("result").innerText = JSON.stringify(data, null, 2);
+    };
+  </script>
+</body>
+</html>

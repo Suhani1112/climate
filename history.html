@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Weather History</title>
+  <style>
+    body { font-family: Arial; padding: 40px; background: #e0f7fa; }
+    .card { background: white; padding: 20px; border-radius: 12px; width: 600px; margin: auto; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+    #result { margin-top: 20px; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>📅 User Weather History</h1>
+    <button id="getHistory">Load History</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    document.getElementById("getHistory").onclick = async () => {
+      const res = await fetch("http://localhost:3000/history/user123");
+      const data = await res.json();
+      document.getElementById("result").innerText = JSON.stringify(data, null, 2);
+    };
+  </script>
+</body>
+</html>
