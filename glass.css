@@ -1,0 +1,10 @@
+/* src/glass.css */
+.glass-card {
+  backdrop-filter: blur(14px);
+  background: rgba(230, 245, 255, 0.19);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.29);
+  border: 1px solid rgba(255,255,255,0.28);
+  padding: 24px;
+  margin-bottom: 32px;
+}
